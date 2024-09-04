@@ -74,7 +74,7 @@ int main() {
 
 ## OUTPUT:
 
-![ceaser cipher](https://github.com/user-attachments/assets/be7fc91d-d685-4505-94c6-d4fc450e69ad)
+![ceaser cipher](https://github.com/user-attachments/assets/89914804-4048-457a-a0cc-b67381746369)
 
 
 ## RESULT:
