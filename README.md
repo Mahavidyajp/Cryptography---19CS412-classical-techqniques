@@ -36,15 +36,19 @@ CaearCipher.
 #include <stdio.h>
 #include <string.h>
 
-void caesar_cipher(char* text, int shift) {
+void caesar_cipher(char* text, int shift, int mode) {
+    if (mode == 2) { // Decryption mode
+        shift = 26 - (shift % 26); // Adjust shift for decryption
+    }
+
     for (int i = 0; text[i] != '\0'; ++i) {
         char ch = text[i];
 
-        
+        // Encrypt/Decrypt uppercase letters
         if (ch >= 'A' && ch <= 'Z') {
             ch = (ch - 'A' + shift) % 26 + 'A';
         }
-       
+        // Encrypt/Decrypt lowercase letters
         else if (ch >= 'a' && ch <= 'z') {
             ch = (ch - 'a' + shift) % 26 + 'a';
         }
@@ -55,26 +59,36 @@ void caesar_cipher(char* text, int shift) {
 
 int main() {
     char text[100];
-    int shift;
+    int shift, choice;
 
     printf("Enter a string: ");
     fgets(text, sizeof(text), stdin);
-    text[strcspn(text, "\n")] = '\0';  
+    text[strcspn(text, "\n")] = '\0';  // Remove newline character
 
     printf("Enter shift amount: ");
     scanf("%d", &shift);
 
-    caesar_cipher(text, shift);
+    printf("Choose an option (1 for encryption, 2 for decryption): ");
+    scanf("%d", &choice);
 
-    printf("Encrypted text: %s\n", text);
+    caesar_cipher(text, shift, choice);
+
+    if (choice == 1)
+        printf("Encrypted text: %s\n", text);
+    else if (choice == 2)
+        printf("Decrypted text: %s\n", text);
 
     return 0;
 }
+
 ```
 
 ## OUTPUT:
 
-![ceaser cipher](https://github.com/user-attachments/assets/89914804-4048-457a-a0cc-b67381746369)
+![Screenshot 2024-09-06 182451](https://github.com/user-attachments/assets/039e9985-198c-4807-ba04-f50c3b566030)
+
+![Screenshot 2024-09-06 182615](https://github.com/user-attachments/assets/374ec190-cece-4a1a-9ac9-ae3c81670935)
+
 
 
 ## RESULT:
